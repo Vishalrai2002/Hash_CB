@@ -42,6 +42,7 @@ class HashTable {
 			temp = temp->next;
 		}
 
+// when [i]  linked list tranfer complete then delete 
 		while(head) {
 			temp = head;
 			head = head->next;
