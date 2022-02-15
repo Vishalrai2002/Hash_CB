@@ -25,6 +25,7 @@ int main() {
     // for(auto p: phoneMap)
 	for(pair<string, vector<string>> p : phoneMap) {
 		cout << p.first << " : ";
+		// Now you have to iterate over the vector so that's why we traverse to the vector
 		for(string phoneNumber : p.second) {
 			cout << phoneNumber << " ";
 		}
