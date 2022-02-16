@@ -1,0 +1,93 @@
+/*
+	Given N cartesian points in a 2D plane, count the number of right-angled triangles that
+	can be formed such that the base or perpendicular is parallel to the x-axis or y-axis.
+	
+	Examples
+	
+	Input : {(0, 0), 
+	         (2, 0), 
+	         (0, 1)}
+
+	Output: 1
+	
+	Input : {(1, 2), 
+			 (2, 0), 
+			 (2, 2), 
+			 (2, 3), 
+			 (4, 2)}
+
+	Output: 4
+*/
+
+#include<iostream>
+#include<vector>
+#include<unordered_map>
+
+using namespace std;
+
+class Point {
+public:
+	int x;
+	int y;
+
+	Point(int x, int y) {
+		this->x = x;
+		this->y = y;
+	}
+};
+
+int main() {
+
+	vector<Point> points = {Point(1, 2), 
+							Point(2, 0), 
+							Point(2, 2), 
+							Point(2, 3), 
+							Point(4, 2)};
+
+	unordered_map<int, int> xFreqMap;
+	unordered_map<int, int> yFreqMap;
+
+// for loop is for iterate over the points
+	for(Point point : points) {
+		xFreqMap[point.x]++;
+		yFreqMap[point.y]++;
+	}
+
+
+	int count = 0;
+	for(Point point : points)  {
+
+		// Below comment approach is O(N^2) 
+
+
+		// consider the 'point' as pivot and compute the no. of
+		// axis parallel rightAngledTriangles around it
+
+		// int a = 0; // to store the no. of points in 2D plane that has same
+		// 		   // x-coordinate as the given 'point'
+
+		// int b = 0; // to store the no. of points in 2D plane that has same
+		// 		   // y-coordinate as the given 'point'
+
+		// for(Point p : points) { // Travers through all the points
+		// 	if(p.x == point.x) { // There point is like pivot here
+		// 		a++;
+		// 	} 
+
+		// 	if(p.y == point.y) { // There point is like a pivot here
+		// 		b++;
+		// 	}
+		// }
+
+		int a = xFreqMap[point.x];
+		int b = yFreqMap[point.y];
+
+// whey we do -1 because in this pivot is included in our final answer so that to remove pivot we do -1
+		count += (a-1)*(b-1); // (a-1) here is to remove pivot from x-axis and (b-1) here is to remove pivot from y-axis.
+	}
+
+	cout << "count : " << count << endl;
+
+
+	return 0;
+}
