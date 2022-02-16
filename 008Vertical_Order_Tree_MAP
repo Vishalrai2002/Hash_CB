@@ -30,16 +30,16 @@ public:
 };
 
 node* buildTree() {
-	int x;
-	cin >> x;
+	int data;
+	cin >> data;
 
-	if(x == -1) {
+	if(data == -1) {
 		node* root = NULL;
 		// root represents an empty tree
 		return root;
 	}
 
-	node* root = new node(x);
+	node* root = new node(data);
 	root->left = buildTree();
 	root->right= buildTree();
 
@@ -69,6 +69,7 @@ int main() {
 // Here intilly our distance is 0 so that we take this
 	verticalOrder(root, distMap, 0);
 
+// For Print
 	for(pair<int, vector<int>> p : distMap) {
 		cout << p.first << " : "; // You can comment out this this line prints distance also
 		for(int node : p.second) {
