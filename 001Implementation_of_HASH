@@ -28,7 +28,7 @@ template <typename T1, typename T2>
 class HashTable {
 	int n; // capacity of the hash table
 	int m; // no. of (key, value) pairs inside the hash table
-	double lft; // load factor threshold
+	double lft; // load factor threshold which is a floating point number
 	node<T1, T2>** table; // pointer to the dyn. arr. that repr. the hash table
 
 	int hash_fn(T1 key) {
